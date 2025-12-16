@@ -1,0 +1,38 @@
+title: Aldiyar's Portfolio
+description: Personal portfolio for SITE1101 course at ADA University
+author: Aldiyar Temirbek
+url: https://m1ser1ti.github.io/site1101_Aldiyar_Temirbek
+repository: m1ser1ti/site1101_Aldiyar_Temirbek
+
+markdown: kramdown
+theme: null
+
+exclude:
+  - node_modules
+  - package.json
+  - package-lock.json
+  - README.md
+  - .gitignore
+  - .git
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+
+include:
+  - .gitignore
+
+permalink: /:title/
+
+collections:
+  projects:
+    output: false
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: null
+      author: Aldiyar Temirbek
+
+sass:
+  style: compressed

@@ -1,0 +1,173 @@
+/* Design system: CSS variables, typography, layout utilities */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Merriweather:wght@300;400;700&display=swap');
+:root{
+  --container-width: 1400px;
+  --page-bg: #f7f7fb;
+  --card-bg: #ffffff;
+  --primary: #7c3aed; /* violet */
+  --accent: #06b6d4; /* teal */
+  --muted: #6b7280; /* gray-500 */
+  --text: #0f172a; /* slate-900 */
+  --radius: 12px;
+  --shadow-1: 0 6px 18px rgba(16,24,40,0.06);
+  --max-content-width: 900px;
+}
+
+/* Theme overrides: set dark and light palettes via data-theme on root */
+:root[data-theme='dark']{
+  --page-bg: #0f0f0f;
+  --card-bg: #0b0b0b;
+  --text: #e6eef8;
+  --muted: #9aa0a6;
+  --shadow-1: 0 10px 28px rgba(2,6,23,0.6);
+}
+
+:root[data-theme='light']{
+  --page-bg: #f7f7fb;
+  --card-bg: #ffffff;
+  --text: #0f172a;
+  --muted: #6b7280;
+  --shadow-1: 0 6px 18px rgba(16,24,40,0.06);
+}
+
+/* Map legacy variables used in `css/styles.css` to our theme vars so
+   older rules that reference --bg / --text still react to theme changes. */
+:root[data-theme='dark'], :root[data-theme='light']{
+  --bg: var(--page-bg);
+  --text-color: var(--text);
+  --text: var(--text); /* some files expect --text directly */
+}
+
+/* Theme toggle button */
+.theme-toggle{width:44px;height:44px;border-radius:999px;background:var(--card-bg);display:grid;place-items:center;border:0;cursor:pointer;box-shadow:0 6px 16px rgba(2,6,23,0.12)}
+.theme-toggle svg{width:20px;height:20px;display:block}
+
+/* Small transition for theme changes */
+html{transition:background-color 240ms ease,color 240ms ease}
+body{background:var(--page-bg);color:var(--text);transition:background-color 240ms ease,color 240ms ease}
+/* Reset-ish */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  color:var(--text);
+  background:var(--page-bg);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.6;
+  font-size:16px;
+}
+.container{
+  /* Allow the container to grow on wide screens but keep comfortable gutters
+     on very large displays by using min() with a viewport percentage. */
+  max-width: min(var(--container-width), 96vw);
+  margin: 0 auto;
+  padding: 20px 28px;
+}
+/* Headings */
+h1{font-family:'Merriweather', serif;font-weight:700;font-size:2.4rem;margin:0 0 0.5rem;color:var(--text)}
+h2{font-family:'Merriweather', serif;font-weight:700;font-size:1.6rem;margin:0 0 0.5rem;color:var(--text)}
+h3{font-weight:700;font-size:1.125rem;margin:0 0 0.5rem;color:var(--text)}
+.lead{color:var(--muted);font-size:1rem}
+
+/* Ensure common UI text picks up theme-aware colors */
+.brand, .top-links a, .profile-name, .hero-title, .hero-sub { color: var(--text); }
+.post-excerpt, .post-meta .meta, .profile-role, .text-muted { color: var(--muted); }
+
+/* Links */
+a { color: var(--primary); }
+a:visited { color: color-mix(in srgb, var(--primary) 60%, black); }
+
+/* Ensure top navigation links keep intended size and theme-aware color
+   (more specific selector to override the global `a` rule). */
+.top-nav .top-links a,
+.top-links a{
+  color: var(--text);
+  font-size: 1.05rem;
+  font-weight: 800;
+  text-decoration: none;
+  margin-left: 1rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 10px;
+}
+.top-nav .top-links a:hover,
+.top-nav .top-links a:focus{ background: rgba(255,255,255,0.04); color: var(--text); outline:none }
+/* Layout */
+.grid{
+  display:grid;
+  gap:24px;
+}
+.grid-2{
+  grid-template-columns:320px 1fr;
+}
+@media (max-width:900px){
+  .grid-2{grid-template-columns:1fr}
+}
+/* Sidebar */
+.sidebar{background:transparent}
+.profile-card{
+  background:var(--card-bg);
+  padding:18px;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow-1);
+}
+.avatar{
+  width:120px;height:120px;border-radius:999px;overflow:hidden;display:block;margin:0 auto 12px;object-fit:cover
+}
+.profile-name{text-align:center;font-weight:700}
+.profile-role{text-align:center;color:var(--muted);font-size:0.95rem}
+/* Post list */
+.posts{display:grid;gap:18px}
+.post-card{
+  display:flex;gap:18px;background:var(--card-bg);padding:18px;border-radius:12px;box-shadow:var(--shadow-1);align-items:flex-start
+}
+.post-card .thumb{width:200px;height:120px;border-radius:8px;object-fit:cover;flex:0 0 200px}
+.post-meta{flex:1}
+.post-meta .meta{color:var(--muted);font-size:0.9rem;margin-bottom:8px}
+.post-title{font-family:'Merriweather',serif;font-size:1.2rem;margin:0 0 8px}
+.post-excerpt{color:#374151}
+/* Buttons */
+.btn{display:inline-block;padding:10px 16px;border-radius:10px;font-weight:600;text-decoration:none;border:0;cursor:pointer}
+.btn-primary{background:linear-gradient(180deg,var(--primary),#5b21b6);color:white}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid rgba(15,23,42,0.06)}
+/* Utilities */
+.text-muted{color:var(--muted)}
+.card{background:var(--card-bg);padding:18px;border-radius:12px;box-shadow:var(--shadow-1)}
+.center{display:flex;align-items:center;justify-content:center}
+/* Focus styles for accessibility */
+:focus{outline:3px solid color-mix(in srgb, var(--primary) 30%, white);outline-offset:3px}
+/* Small screen tweaks */
+@media (max-width:640px){
+  .post-card{flex-direction:column}
+  .post-card .thumb{width:100%;height:220px;flex:0 0 auto}
+}
+/* Helper: limit text width for readability */
+.readable{max-width:var(--max-content-width)}
+
+/* Theme-aware overrides to ensure existing styles (e.g., in css/styles.css)
+  using hardcoded colors are overridden to use our variables. These rules
+  use higher specificity and !important as needed so dark/light switching
+  reliably updates text and backgrounds. */
+
+/* Header / nav */
+.top-nav{ background: var(--card-bg) !important; color: var(--text) !important; box-shadow: var(--shadow-1) !important; }
+.top-nav .brand{ color: var(--text) !important; }
+.top-nav .top-links a, .top-links a{ color: var(--text) !important; font-weight:800 !important; }
+.top-nav .top-links a:hover, .top-nav .top-links a:focus{ background: color-mix(in srgb, var(--text) 6%, transparent) !important; }
+
+/* Sidebar / profile */
+.sidebar, .profile-card, .sidebar-card{ background: var(--card-bg) !important; color: var(--text) !important; box-shadow: var(--shadow-1) !important; }
+.name, .profile-name, .profile-role, .tagline{ color: var(--text) !important; }
+.sidebar .social-icons .social-item .social-label, .social-label{ color: var(--muted) !important; }
+
+/* Hero and content */
+.hero-caption, .hero-title, .hero-sub, .intro h2, .intro p{ color: var(--text) !important; }
+.post-excerpt, .post-meta .meta{ color: var(--muted) !important; }
+
+/* Make sure link color in content remains visible but consistent with theme */
+.content a, .intro a { color: var(--primary) !important; }
+
+/* Ensure dark-mode special overrides don't force black text */
+body.dark .name, body.dark .tagline, body.dark .profile-role { color: var(--text) !important; }
+

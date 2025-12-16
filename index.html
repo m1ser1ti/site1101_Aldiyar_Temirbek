@@ -12,25 +12,31 @@
     <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" href="assets/img/favicon.ico">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/design-system.css">
 </head>
 <body class="dark">
-    <div class="layout">
-
-        
-        <aside class="sidebar">
-            <img src="assets/img/profile.jpg" alt="Aldiyar photo" class="profile-photo">
-
-            <h1 class="name">Aldiyar Temirbek</h1>
-            <p class="tagline">
-                SITE1101 student • beginner in HTML, CSS, Git, and GitHub.
-            </p>
-
-            <nav class="nav-column">
+    <header class="top-nav" role="banner">
+        <div class="container top-nav-inner">
+            <a class="brand" href="index.html">Aldiyar Temirbek</a>
+            <nav class="top-links" role="navigation" aria-label="Main navigation">
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
                 <a href="projects.html">Projects</a>
                 <a href="contact.html">Contact</a>
             </nav>
+            
+            <button class="theme-toggle" aria-label="Toggle theme" title="Toggle theme"></button>
+        </div>
+    </header>
+    <div class="container"><div class="grid grid-2 layout">
+
+        
+        <aside class="sidebar">
+            <div class="profile-card">
+            <img src="assets/img/profile.jpg" alt="Aldiyar photo" class="profile-photo">
+
+            <h1 class="name">Aldiyar Temirbek</h1>
+            <p class="tagline">Student of SITE - ADA University  Learning basics of HTML и CSS. btw I'm new here...</p>
 
             <div class="sidebar-links">
                 <div class="social-icons" role="navigation" aria-label="Social links">
@@ -72,41 +78,20 @@
                     </div>
                 </div>
             </div>
-
-            
+            </div>
         </aside>
 
        
         <main class="content">
-            <figure class="hero-figure">
+            <figure class="hero-figure card readable">
                 <img class="hero-image" src="assets/img/hero.jpg" alt="Large scenic photo" loading="lazy">
                 <figcaption class="hero-caption">
-                    <h2 class="hero-title">Aldiyar Temirbek</h2>
-                    <p class="hero-sub">MUHAHAHAHAHA MEME</p>
+                    <h2 class="hero-title">Dumbledore, Harry Potter</h2>
                 </figcaption>
             </figure>
-
-            <section class="intro">
-                <div class="container">
-                    <h2>About Me</h2>
-
-                    <p>Hello! I’m Aldiyar Temirbek, a first-year student at ADA University. I am currently learning the fundamentals of information systems and web development in the SITE1101 course. This website is one of my first projects where I apply what I’ve learned about HTML, CSS, Git, and GitHub.</p>
-
-                    <p>I am still at the beginning of my programming journey, but I enjoy learning how websites are structured, how code works behind the scenes, and how small steps lead to visible results. Creating this project helped me understand the development process, version control, and how to organize files and code properly.</p>
-
-                    <p>I am also involved in team activities, including our Group Project 2, which is still ongoing. Working together with classmates helps me improve communication, planning, and problem-solving skills.</p>
-
-                    <p>In the future, I hope to build more advanced websites, learn JavaScript in depth, and become more confident in software development. For now, I’m enjoying the process and improving day by day.</p>
-                </div>
-            </section>
-
-            <footer>
-                <p>Aldiyar Temirbek – SITE1101 Project</p>
-                <p>
-                    <a href="https://github.com/m1ser1ti/site1101_Aldiyar_Temirbek" target="_blank">GitHub repository</a>
-                </p>
-            </footer>
+            
         </main>
-    </div>
+    </div></div>
+    <script src="js/theme-toggle.js" defer></script>
 </body>
 </html>
